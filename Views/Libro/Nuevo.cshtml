@@ -1,0 +1,72 @@
+﻿@model JunjiIto.ViewModels.LibroVM
+@{
+    ViewData["Title"] = "Nuevo";
+}
+
+<h1>Agregar obra</h1>
+
+<div class="col-md-10 mx-0 h-auto py-4 m-auto" style="width:80%;">
+    <div class="card">
+        <div class="card-header bg-primary text-uppercase text-white">
+            <h4>Agregar nueva obra</h4>
+        </div>
+
+        <div class="card-body">
+            <form enctype="multipart/form-data" asp-action="Nuevo">
+            
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label asp-for="Nombre" class="control-label"></label>
+                            <input asp-for="Nombre" class="form-control" />
+                            <span asp-validation-for="Nombre" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label asp-for="Descripcion" class="control-label"></label>
+                            <input asp-for="Descripcion" class="form-control" />
+                            <span asp-validation-for="Descripcion" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="Publicacion" class="control-label"></label>
+                                <input asp-for="Publicacion" class="form-control" />
+                                <span asp-validation-for="Publicacion" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label asp-for="Foto" class="control-label"></label>
+                            <div class="custom-file">
+                                <input asp-for="Foto" class="custom-file-input" id="custom-file" />
+                                <label class="custom-file-label" for="customfile">Agregue portada</label>
+                            </div>
+                            <span asp-validation-for="Foto" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-sm btn-primary rounded-1 text-uppercase" />
+                    <a asp-action="Index" class="btn btn-sm btn-primary rounded-1 text-uppercase">
+                        <i class="fas fa-fast-backward"></i>
+                        Volver a la lista
+                    </a>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+

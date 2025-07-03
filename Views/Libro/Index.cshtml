@@ -1,0 +1,59 @@
+﻿@model JunjiIto.ViewModels.BuscaVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Junji Ito Stories</h1>
+
+<p>
+    <a asp-action="Nuevo" class="btn btn-sm btn-primary rounded-1 text-uppercase"><i class="fas fa-plus-circle">Agregar nueva obra</i></a>
+</p>
+
+<form asp-action="Libro" asp-action="Index">
+    <p>
+        Nombre: <input type="text" name="bNombre" />
+        Publicacion:<input type="text" name="bPublicacion" />
+
+        <input type="submit" value="Buscar" />
+    </p>
+</form>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-oNombre="@ViewData["nombre"]">
+                    @Html.DisplayNameFor(Model => Model.LosLibros[0].Nombre)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-oPublicacion="@ViewData["publicacion"]">
+                    @Html.DisplayNameFor(Model => Model.LosLibros[0].Publicacion)
+                </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.LosLibros)
+        {
+            <tr>
+                <td>
+                    <img src="~/Portadas/@item.FotoLibro" width="50" height="auto" />
+                    <a asp-action="Detalles" asp-route-id="@item.Id">
+                        @item.Nombre
+                    </a>
+                </td>
+                <td>@item.Publicacion</td>
+                <td>
+                    <a asp-action="Editar" asp-route-id="@item.Id">
+                        <i class="fa-solid fa-pen-to-square fa-lg" style="color:aquamarine;"></i>
+                    </a>
+                    <a asp-action="Eliminar" asp-route-id="@item.Id">
+                        <i class="fa-solid fa-trash fa-lg" style="color:darkred;"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
