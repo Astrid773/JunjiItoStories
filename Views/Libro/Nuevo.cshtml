@@ -1,0 +1,93 @@
+﻿@model JunjiIto.ViewModels.LibroVM
+@{
+    ViewData["Title"] = "Nuevo";
+}
+
+<head>
+    <!--<link rel="stylesheet" href="~/css/style.css" />-->
+    <link rel="stylesheet" href="~/css/style_Nuevo.css" />
+</head>
+
+<body>
+<header class="header-nuevo">
+    <h1>Agregar obra</h1>
+</header>
+
+<div class="col-md-10 mx-0 h-auto py-4 m-auto" style="width:100%" style="height:100%" style="float:center" >
+    <div class="card-nuevo">
+        <!--<div class="card-header text-uppercase text-white" style="background-color:#2b2b2b">
+            <h4>Agregar nueva obra</h4>
+        </div>-->
+
+        <div class="card-body">
+            <form enctype="multipart/form-data" asp-action="Nuevo">
+            
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <!--<label asp-for="Nombre" class="control-label"></label>-->
+                            <input asp-for="Nombre" class="form-control" placeholder="Nombre"/>
+                                <span asp-validation-for="Nombre" class="text-danger" style="color: white"></span>
+                        </div>
+                    </div>
+                        <br />
+                        <br />
+                        <br />
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <!--<label asp-for="Descripcion" class="control-label"></label>-->
+                            <input asp-for="Descripcion" class="form-control" placeholder="Descripcion"/>
+                                <span asp-validation-for="Descripcion" class="text-danger" style="color: white"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <br />
+
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <!--<label asp-for="Publicacion" class="control-label"></label>-->
+                                <input asp-for="Publicacion" class="form-control" placeholder="Publicacion" />
+                                <span asp-validation-for="Publicacion" class="text-danger" style="color: white"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                        <br />
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <!--<label asp-for="Foto" class="control-label"></label>-->
+                            <div class="custom-file">
+                                <input asp-for="Foto" class="custom-file-input text-black" id="custom-file" />
+                                <label class="custom-file-label text-black" for="customfile">Agregue portada</label>
+                            </div>
+                            <span asp-validation-for="Foto" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                        <input type="submit" class="btn btn-sm rounded-1 text-uppercase text-white" style="background-color:#e50914" />
+                    <a asp-action="Index" class="btn btn-sm rounded-1 text-uppercase text-white" style="background-color:#e50914">
+                        <i class="fas fa-fast-backward"></i>
+                        Volver a la lista
+                    </a>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <p>© 2025 Junji Ito Stories — Todos los derechos reservados</p>
+        <p>Contacto: junjiitostories@email.com</p>
+    </div>
+</footer>
+</body>

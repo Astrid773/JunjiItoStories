@@ -1,0 +1,83 @@
+﻿@model JunjiIto.Models.Libro
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/style_Nuevo.css" />
+</head>
+
+<header class="header-nuevo">
+    <h1>Editar</h1>
+</header>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data" asp-action="Editar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Publicacion" class="control-label"></label>
+                <input asp-for="Publicacion" class="form-control" />
+                <span asp-validation-for="Publicacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FotoLibro" class="control-label"></label>
+                <div class="custom-file">
+                    <input asp-for="FotoLibro" class="custom-file-input" id="custom-file" />
+                    <label class="custom-file-label" for="customfile">Agregue portada</label>
+                </div>
+                <span asp-validation-for="FotoLibro" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-sm rounded-1 text-uppercase text-white" style="background-color:#e50914">
+ 
+                <div class="form-group">
+                    <label class="control-label">Imagen de obra</label>
+                    <div class="custom-file">
+                        <input type="file" name="Foto" class="custom-file-input" id="customfile" />
+                        <label class="custom-file-label" for="customfile">Cambiar imagen</label>
+                    </div>
+                    @if (!string.IsNullOrEmpty(Model.FotoLibro))
+                    {
+                        <div class="mt-2">
+                            <img src="~/Portadas/@Model.FotoLibro" style="width:100px" />
+                            <p>Imagen actual: @Model.FotoLibro</p>
+                        </div>
+                    }
+                    <input type="hidden" asp-for="FotoLibro" />
+
+                    <a asp-action="Index" class="btn btn-sm rounded-1 text-uppercase text-white" style="background-color:#e50914">
+                        <i class="fas fa-fast-backward"></i>
+                        Volver a la lista
+                    </a>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2025 Junji Ito Stories — Todos los derechos reservados</p>
+        <p>Contacto: junjiitostories@email.com</p>
+    </div>
+</footer>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

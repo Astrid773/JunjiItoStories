@@ -1,0 +1,73 @@
+﻿@model JunjiIto.ViewModels.BuscaVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/style_Nuevo.css" />
+</head>
+
+<header class="header-nuevo">
+    <h1 class="text-white">Junji Ito Stories</h1>
+</header>
+
+<form asp-action="Libro" asp-controller="Index">
+    <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+        <div>
+            <a asp-action="Nuevo" class="btn btn-sm rounded-1 text-uppercase text-white" style="background-color:#e50914">
+                Agregar nueva obra
+            </a>
+        </div>
+        <div class="d-flex flex-wrap gap-2">
+            <input type="text" name="nombre" placeholder="Buscar por nombre" class="rounded-1 form-control" />
+            <input type="text" name="publicacion" placeholder="Buscar por publicación" class="rounded-1 form-control" />
+            <input type="submit" value="Buscar" class="btn btn-sm rounded-1 text-uppercase text-white" style="background-color:#e50914" />
+        </div>
+    </div>
+</form>
+
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model.LosLibros)
+        {
+            <div class="col-12 col-md-10 col-lg-8 mb-4 mx-auto">
+                <div class="card shadow rounded w-100">
+                    <div class="card-body d-flex align-items-start">
+                        <!-- Fixed-size image -->
+                        <img src="~/Portadas/@item.FotoLibro"
+                             alt="Portada de @item.Nombre"
+                             style="width:100px; height:140px; object-fit:cover; border-radius:8px;"
+                             class="me-3" />
+
+                        <!-- Book info -->
+                        <div class="flex-grow-1">
+                            <h5 class="card-title mb-1">
+                                <a asp-action="Detalles" asp-route-id="@item.Id" class="text-decoration-none text-dark">
+                                    @item.Nombre
+                                </a>
+                            </h5>
+                            <small class="text-muted d-block mb-2">@item.Publicacion</small>
+
+                            <div class="text-end">
+                                <a asp-action="Editar" asp-route-id="@item.Id" class="me-2">
+                                    <i class="fa-solid fa-pen-to-square fa-lg" style="color:aquamarine;"></i>
+                                </a>
+                                <a asp-action="Eliminar" asp-route-id="@item.Id">
+                                    <i class="fa-solid fa-trash fa-lg" style="color:darkred;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<footer class="footer mt-5">
+    <div class="container">
+        <p>© 2025 Junji Ito Stories — Todos los derechos reservados</p>
+        <p>Contacto: junjiitostories@email.com</p>
+    </div>
+</footer>
+
